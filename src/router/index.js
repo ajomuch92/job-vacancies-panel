@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import Index from '../pages/Index';
+import Panel from '../pages/panel/Index'
 // import store from '../store';
 
 Vue.use(Router);
@@ -12,23 +13,23 @@ const router = new Router({
       path: '/',
       component: Index
     },
-    // {
-    //   path: '/panel',
-    //   component: Dashboard,
-    //   children: [
-    //     {
-    //       path: '/',
-    //       component: DashboardMain
-    //     },
-    //     {
-    //       path: '/orders',
-    //       component: DashboardOrders
-    //     }
-    //   ],
-    //   meta: {
-    //     requiresAuth: true,
-    //   }
-    // }
+    {
+      path: '/panel',
+      component: Panel,
+      children: [
+        // {
+        //   path: '/',
+        //   component: DashboardMain
+        // },
+        // {
+        //   path: '/orders',
+        //   component: DashboardOrders
+        // }
+      ],
+      meta: {
+        requiresAuth: true,
+      }
+    }
   ]
 });
 
