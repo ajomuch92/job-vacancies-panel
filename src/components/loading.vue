@@ -1,6 +1,6 @@
 <template>
   <v-dialog v-model="visible" width="150" persistent no-click-animation>
-    <v-card flat outlined class="d-flex justicy-center align-center">
+    <v-card flat outlined class="d-flex flex-column justicy-center align-center">
       <v-progress-circular
         class="mt-2"
         indeterminate
