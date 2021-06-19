@@ -21,7 +21,9 @@ export default {
     }
   }),
   mounted() {
-    this.ui = new auth.AuthUI(firebase.auth());
+    this.ui = auth.AuthUI.getInstance();
+    if(!this.ui)
+      this.ui = new auth.AuthUI(firebase.auth());
     this.ui.start('#login-container', this.uiConfig);
     if(firebase.auth().currentUser) {
       firebase.auth().signOut();
@@ -33,7 +35,6 @@ export default {
       console.log(user);
       if(user) {
         user.getIdToken().then(accessToken => {
-          console.log(accessToken);
           this.$store.commit('setAccessToken', accessToken);
         });
       }
