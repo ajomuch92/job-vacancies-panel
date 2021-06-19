@@ -1,9 +1,10 @@
 <template>
-  <v-dialog v-model="visible" :max-width="width" persistent>
+  <v-dialog v-model="visible" :max-width="width" persistent scrollable>
     <v-card>
       <v-card-title>
         <span class="text-h5">{{ value.id? 'Edit Candidate': 'Add New Candidate' }}</span>
       </v-card-title>
+      <v-divider />
       <v-card-text>
         <v-form v-model="valid">
           <v-text-field
@@ -55,7 +56,7 @@
           ></v-autocomplete>
         </v-form>
       </v-card-text>
-
+      <v-divider />
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn

@@ -9,6 +9,7 @@
         label="Search"
         single-line
         hide-details
+        dense
         outlined
       />
     </div>
