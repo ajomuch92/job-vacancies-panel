@@ -5,5 +5,6 @@ export default {
   authDomain: process.env.VUE_APP_AUTH_DOMAIN,
   messagingSenderId: process.env.VUE_APP_MESSAGING_SENDER_ID,
   projectId: process.env.VUE_APP_PROJECT_ID,
-  timeZoneUrl: process.env.VUE_APP_TIME_ZONE
+  supabaseUrl: process.env.VUE_APP_SUPABASE_URL,
+  supabaseKey: process.env.VUE_APP_SUPABASE_KEY,
 }

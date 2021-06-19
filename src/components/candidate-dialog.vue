@@ -80,6 +80,7 @@
 
 <script>
 import Constants from '../utils/constants';
+import { createClient } from '@supabase/supabase-js'
 
 export default {
   name: 'candidate-dialog',
@@ -119,17 +120,14 @@ export default {
     this.loadTimeZones();
   },
   methods: {
-    loadTimeZones() {
-      this.$http.get(Constants.timeZoneUrl, {}).then(response => {
-        const {status, data, statusText} = response;
-        if(status == 200) {
-          this.timezones = data||[];
-        } else {
-          this.$bus.$emit('onToast', {type: 'error', text: statusText});
-        }
-      }).catch(() => {
-          this.$bus.$emit('onToast', {type: 'error', text: 'There was an error during loading timezones'});
-      });
+    async loadTimeZones() {
+      const supabase = createClient(Constants.supabaseUrl, Constants.supabaseKey);
+      let { data, error } = await supabase
+      .from('time_zones')
+      .select();
+      if(!error) {
+        this.timezones = data.map(r => r.Name);
+      }
     },
     save($event) {
       if(this.valid)
