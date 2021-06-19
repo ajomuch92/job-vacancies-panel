@@ -5,12 +5,24 @@ import axios from 'axios';
 import VueAxios from 'vue-axios';
 import store from './store';
 import router from './router';
+import firebase from 'firebase';
+import Constants from './utils/constants';
 
 Vue.config.productionTip = false;
 
 Vue.use(VueAxios, axios);
 
 Vue.prototype.$bus = new Vue();
+
+const firebaseConfig = {
+  apiKey: Constants.apiKey,
+  authDomain: Constants.authDomain,
+  projectId: Constants.projectId,
+  messagingSenderId: Constants.messagingSenderId,
+  appId: Constants.appId
+};
+
+firebase.initializeApp(firebaseConfig);
 
 new Vue({
   vuetify,
